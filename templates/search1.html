@@ -1,0 +1,175 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="static/login3.css">
+    <script src="static/login2.js"></script>
+
+<style>
+* {box-sizing: border-box}
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
+}
+
+
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 100%;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+.tabcontent {
+    color: black;
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
+}
+
+
+</style>
+</head>
+
+
+<button class="tablink" onclick="openPage('search1', this, '#4CAF50')" id="defaultOpen">Bank Name and City Search</button>
+
+
+<div id="search1" class="tabcontent">
+  
+  <div class="login-page">
+    <div class="form">
+        <h3>Bank Search</h3>
+        <p>Enter Bank name and City.</p>
+      <form class="login-form" method="post" action="/search1">
+        <input type="text" placeholder="Bank Name" name="name"/>
+        <input type="text" placeholder="City" name="city"/>
+    
+    
+        <button>Search</button>
+       
+      </form>
+      <button onClick="location.href='search'">IFSC Search</button>
+      <p class="message"> {{ error }}</p>
+      
+    </div>
+  </div>
+  {% if meh == 'False' %}
+  <div class="login-page1" >
+    <div class="form1">
+                <table border="1" style="text-align:center;border-spacing: 5px; padding:15px; width:100% ">
+                                <tr>
+                                                <th>
+                                                        IFSC
+                                                </th>
+                                                <th>
+                                                        BANK ID
+                                                </th>
+                                                <th>
+                                                        BRANCH
+                                                </th>
+                                                <th>
+                                                        ADDRESS
+                                                </th>
+                                                <th>
+                                                        CITY
+                                                </th>
+                                                <th>
+                                                        DISTRICT
+                                                </th>
+                                                <th>
+                                                        STATE
+                                                </th>
+                                                <th>
+                                                        BANKNAME
+                                                </th>
+                                                
+                                            </tr>
+                                            {% for i in myUser %}
+                                            <tr>
+                                                       
+                                                        <td>
+                                                                {{ i.ifsc }}
+                                                        </td>
+                                                        <td>
+                                                                {{ i.bank_id }} 
+                                                        </td>
+                                                        <td>
+                                                                {{ i.branch }}
+                                                        </td>
+                                                        <td>
+                                                                {{ i.address }}
+                                                        </td>
+                                                        <td>
+                                                                {{ i.city }}
+                                                        </td>
+                                                        <td>
+                                                                {{ i.district }}
+                                                        </td>
+                                                        <td>
+                                                                {{ i.state }}
+                                                        </td>
+                                                        <td>
+                                                                {{ i.bank_name }}
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </table>
+       
+ 
+       
+        
+               
+        <br>
+      
+      </form>
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+
+
+<br>
+
+
+
+  
+
+      
+    
+
+
+
+<script>
+function openPage(pageName,elmnt,color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+
+}
+
+document.getElementById("defaultOpen").click();
+</script>
+     
+
+</html> 
+
