@@ -1,6 +1,6 @@
 from app import db
 from app import User
-
+from flask_sqlalchemy import SQLAlchemy 
 
 db = SQLAlchemy(app)
 db.create_all()
