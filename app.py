@@ -42,7 +42,7 @@ class User(db.Model):
         return 'IFSC : {} BANK ID : {} BRANCH : {} ADDRESS : {} CITY : {} DISTRICT : {} STATE : {} BANK NAME : {} '.format(self.ifsc,self.bank_id,self.branch,self.address,self.city,self.district,self.state,self.bank_name)
 
         
-db.make_connector(app=app)
+
 
 @app.route('/')
 def home():
