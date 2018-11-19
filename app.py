@@ -46,6 +46,7 @@ class User(db.Model):
 
 @app.route('/')
 def home():
+    db.create_all()
     if request.method == 'POST':
         return redirect(url_for('index'))
     else:
@@ -57,7 +58,7 @@ def index():
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
-    db.create_all()
+    
     meh = 'True'
     myUser=None
     error = None
