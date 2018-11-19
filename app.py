@@ -8,14 +8,15 @@ from sqlalchemy import and_
 
 app =Flask(__name__)
 app.secret_key = "lol"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://lanschristopher:db@localhost/lanschristopher'
-
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://lanschristopher:db@localhost/lanschristopher'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ybctpoxrjrgwfj:1854d630f94fae116c32c30abba59749712ece44e1a06f44aadfb30e183f298e@ec2-50-19-249-121.compute-1.amazonaws.com:5432/d7k933hmm55v1p'
 db = SQLAlchemy(app)
 
 
 
 class User(db.Model):
     
+    id = db.Column(db.Integer, primary_key=True)
     ifsc = db.Column(db.String, unique=True, primary_key=True)
     bank_id = db.Column(db.String)
     branch = db.Column(db.String)
@@ -41,6 +42,7 @@ class User(db.Model):
         return 'IFSC : {} BANK ID : {} BRANCH : {} ADDRESS : {} CITY : {} DISTRICT : {} STATE : {} BANK NAME : {} '.format(self.ifsc,self.bank_id,self.branch,self.address,self.city,self.district,self.state,self.bank_name)
 
         
+db.make_connector(app=app)
 
 @app.route('/')
 def home():
