@@ -1,5 +1,6 @@
 from app import db
 from app import User
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy 
 
 app =Flask(__name__)
