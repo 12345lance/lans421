@@ -16,7 +16,7 @@ db = SQLAlchemy(app)
 
 class User(db.Model):
     
-    id = db.Column(db.Integer, primary_key=True)
+   
     ifsc = db.Column(db.String, unique=True, primary_key=True)
     bank_id = db.Column(db.String)
     branch = db.Column(db.String)
