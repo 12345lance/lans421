@@ -57,14 +57,13 @@ def index():
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
+    db.create_all()
     meh = 'True'
     myUser=None
     error = None
     if request.method == 'POST':
         myUser =  User.query.filter_by(ifsc=request.form['ifsc']).first()
-       
-      
-     
+        
         meh = 'False'
         if myUser == None:
             meh = 'True'
